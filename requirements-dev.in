@@ -1,0 +1,21 @@
+-c requirements.txt
+pre-commit
+pre-commit-hooks
+isort
+pylint
+black
+docformatter
+pip-tools
+Sphinx
+python-dotenv
+pytest
+ipython
+nbmake
+nbqa
+tox
+squarify
+beautifulsoup4
+selenium
+webdriver-manager
+sqlalchemy
+lxml
