@@ -53,7 +53,7 @@ pip-compile: install-pip-tools
 	pip-compile --no-emit-index-url requirements-dev.in
 
 pip-downgrade:
-	$(PYTHON_INTERPRETER) -m pip install pip==21.3.1
+	$(PYTHON_INTERPRETER) -m pip install pip==22.2.1
 
 ## Install Python Dependencies & Install pre-commit hooks
 requirements: pip-downgrade pip-compile check_installed_python
