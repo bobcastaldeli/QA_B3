@@ -254,7 +254,9 @@ metaflow==2.8.1
 mistune==2.0.5
     # via nbconvert
 mypy-extensions==1.0.0
-    # via black
+    # via
+    #   -c requirements.txt
+    #   black
 nb-black==1.0.7
     # via -r requirements-dev.in
 nbclassic==0.5.3

@@ -4,3 +4,4 @@ beautifulsoup4
 selenium
 webdriver-manager
 farm-haystack[all]
+langchain

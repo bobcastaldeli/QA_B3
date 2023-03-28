@@ -187,10 +187,14 @@ def scrap_product_description(product_url: list) -> pd.DataFrame:
     for product in products:
         response = requests.get(product)
         soup = BeautifulSoup(response.text, "html.parser")
-        text = soup.find_all("li")
-        text = [element.text for element in text]
-        text = " ".join(text)
+        # from the html get all elements with p, table and h1, h2, h3, h4, h5,
+        text = soup.find_all(
+            ["p", "h1", "h2", "h3", "h4", "h5", "table", "ul", "li"]
+        )
+        all_text = ""
+        for element in text:
+            all_text += element.text
         products_df = products_df.append(
-            {"url": product, "text": text}, ignore_index=True
+            {"url": product, "text": all_text}, ignore_index=True
         )
     return products_df
