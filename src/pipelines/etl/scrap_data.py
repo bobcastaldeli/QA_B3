@@ -1,5 +1,7 @@
-"""This module is responsible for scraping data of
-the products from the B3 website."""
+"""
+This module is contains the functions to
+scrap all products data from the B3 website.
+"""
 
 # %%
 import logging
@@ -163,11 +165,8 @@ def scrap_product_section(produtos_links: pd.DataFrame) -> list:
         else:
             related_sections = [
                 product
-            ]  # append an empty list when side-nav is not found
+            ]  # append the original URL when side-nav is not found
         product_sections.append(related_sections)
-        product_sections = [
-            item for sublist in product_sections for item in product_sections
-        ]
     return product_sections
 
 
