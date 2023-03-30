@@ -5,3 +5,4 @@ selenium
 webdriver-manager
 farm-haystack[all]
 langchain
+chromadb

@@ -182,19 +182,29 @@ def scrap_product_description(product_url: list) -> pd.DataFrame:
     returns
     df: pandas DataFrame
     """
-    products_df = pd.DataFrame(columns=["url", "text"])
+    products_df = pd.DataFrame(columns=["url", "content"])
     products = product_url
+    exclude_classes = [
+        "active",
+        "breadcrumbs hide-for-small-only",
+        "sub-nav",
+        "side-nav",
+    ]
+
     for product in products:
         response = requests.get(product)
         soup = BeautifulSoup(response.text, "html.parser")
+        # exclude elements with the specified classes and their children
+        for el in soup.find_all(class_=exclude_classes):
+            el.extract()
         # from the html get all elements with p, table and h1, h2, h3, h4, h5,
         text = soup.find_all(
-            ["p", "h1", "h2", "h3", "h4", "h5", "table", "ul", "li"]
+            ["p", "h2", "h3", "h4", "h5", "table", "ul", "li"]
         )
         all_text = ""
         for element in text:
             all_text += element.text
         products_df = products_df.append(
-            {"url": product, "text": all_text}, ignore_index=True
+            {"url": product, "content": all_text}, ignore_index=True
         )
     return products_df
