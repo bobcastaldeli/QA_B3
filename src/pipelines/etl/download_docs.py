@@ -6,6 +6,7 @@ of the B3 website.
 
 
 # %%
+import time
 import yaml
 import logging
 import pandas as pd
@@ -49,5 +50,3 @@ docs_df.to_csv(
     "../../../data/02_intermediate/docs.csv",
     index=False,
 )
-
-# %%

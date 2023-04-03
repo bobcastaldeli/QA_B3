@@ -88,7 +88,7 @@ exceptiongroup==1.1.1
     # via
     #   trio
     #   trio-websocket
-farm-haystack[all]==1.14.0
+farm-haystack[all,faiss]==1.14.0
     # via -r requirements.in
 fastapi==0.95.0
     # via chromadb

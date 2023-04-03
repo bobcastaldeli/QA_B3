@@ -134,7 +134,6 @@ def scrap_product_category(produtos_url: list) -> pd.DataFrame:
 def scrap_product_section(produtos_links: pd.DataFrame) -> list:
     """This function gets all the related products of each product in the
     products and services page of the B3 website.
-
     Parameters
     ----------
     produtos_links: list
@@ -177,7 +176,7 @@ def scrap_product_description(product_url: list) -> pd.DataFrame:
 
     Parameters
     ----------
-    produtos_links: list
+    product_url: list
         list of urls
     returns
     df: pandas DataFrame
@@ -201,9 +200,21 @@ def scrap_product_description(product_url: list) -> pd.DataFrame:
         text = soup.find_all(
             ["p", "h2", "h3", "h4", "h5", "table", "ul", "li"]
         )
-        all_text = ""
+        all_text = []
         for element in text:
-            all_text += element.text
+            if element.name == "table":
+                rows = element.find_all("tr")
+                table_text = []
+                for row in rows:
+                    cells = row.find_all("td")
+                    row_text = []
+                    for cell in cells:
+                        row_text.append(cell.text.strip())
+                    table_text.append(" ".join(row_text))
+                all_text.append("\n".join(table_text))
+            else:
+                all_text.append(element.text.strip())
+        all_text = "\n\n".join(all_text)
         products_df = products_df.append(
             {"url": product, "content": all_text}, ignore_index=True
         )
