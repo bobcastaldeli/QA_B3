@@ -197,24 +197,18 @@ def scrap_product_description(product_url: list) -> pd.DataFrame:
         for el in soup.find_all(class_=exclude_classes):
             el.extract()
         # from the html get all elements with p, table and h1, h2, h3, h4, h5,
-        text = soup.find_all(
-            ["p", "h2", "h3", "h4", "h5", "table", "ul", "li"]
-        )
-        all_text = []
+        text = soup.find_all(["p", "h2", "h3", "h4", "h5", "table"])
+        all_text = ""
         for element in text:
             if element.name == "table":
                 rows = element.find_all("tr")
-                table_text = []
                 for row in rows:
-                    cells = row.find_all("td")
-                    row_text = []
-                    for cell in cells:
-                        row_text.append(cell.text.strip())
-                    table_text.append(" ".join(row_text))
-                all_text.append("\n".join(table_text))
+                    cols = row.find_all("td")
+                    for col in cols:
+                        all_text += col.text.strip() + " "
+                    all_text += "\n"
             else:
-                all_text.append(element.text.strip())
-        all_text = "\n\n".join(all_text)
+                all_text += element.text.strip() + "\n"
         products_df = products_df.append(
             {"url": product, "content": all_text}, ignore_index=True
         )

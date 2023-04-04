@@ -6,7 +6,6 @@ of the B3 website.
 
 
 # %%
-import time
 import yaml
 import logging
 import pandas as pd
