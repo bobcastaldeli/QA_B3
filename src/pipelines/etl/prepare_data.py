@@ -1,5 +1,5 @@
 """
-This module write data to a FAISS document store.
+This module write data to a Elastic Search document store.
 """
 
 

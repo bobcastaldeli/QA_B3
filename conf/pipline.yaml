@@ -1,0 +1,22 @@
+components:
+- name: ElasticsearchDocumentStore
+  params: {}
+  type: ElasticsearchDocumentStore
+- name: BM25Retriever
+  params:
+    document_store: ElasticsearchDocumentStore
+  type: BM25Retriever
+- name: FARMReader
+  params:
+    model_name_or_path: timpal0l/mdeberta-v3-base-squad2
+  type: FARMReader
+pipelines:
+- name: query
+  nodes:
+  - inputs:
+    - Query
+    name: BM25Retriever
+  - inputs:
+    - BM25Retriever
+    name: FARMReader
+version: 1.14.0
