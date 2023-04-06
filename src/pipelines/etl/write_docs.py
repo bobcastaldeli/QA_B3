@@ -31,7 +31,10 @@ time.sleep(30)
 host = os.environ.get("ELASTICSEARCH_HOST", "localhost")
 
 document_store = ElasticsearchDocumentStore(
-    host=host, username="", password="", index="document", embedding_dim=512
+    host=host,
+    username="",
+    password="",
+    index="document",
 )
 
 
