@@ -11,26 +11,46 @@ st.title("Chatbot sobre produtos e serviços da B3")
 st.write("Pergunte sua dúvida sobre produtos e serviços da B3")
 
 
-API_URL = "http://localhost:8000/query"
-
-
-def main():
+def generate_response(query):
     """
-    This function is responsible for displaying the Streamlit frontend.
+    This function is responsible for making a GET request to the API endpoint.
     """
-    query = st.text_input("Enter your question:", "")
-    if st.button("Submit"):
-        # Make GET request to the API endpoint
-        response = requests.get(API_URL, params={"query": query})
-        if response.status_code == 200:
-            result = response.json()
-            # Process the result and display it in Streamlit
-            # You can access the relevant information from the response JSON
-            # For example, if the response JSON has a 'answer' field, you can display it like this:
-            st.success(f"Answer: {result}")
-        else:
-            st.error("Failed to get answer. Please try again.")
+    # Replace the API_URL with the URL of your deployed API endpoint
+    API_URL = "http://localhost:8000/query"
+    response = requests.get(API_URL, params={"query": query}, timeout=15)
+    if response.status_code == 200:
+        result = response.json()
+        return message(result)
+    else:
+        return None
 
 
-if __name__ == "__main__":
-    main()
+def input():
+    """
+    This function is responsible for taking the user input.
+    """
+    prompt_text = st.text_input("Type your question here")
+    return prompt_text
+
+
+if "generated" not in st.session_state:
+    st.session_state["generated"] = []
+
+if "past" not in st.session_state:
+    st.session_state["past"] = []
+
+
+user_input = input()
+
+
+if user_input:
+    output = generate_response(user_input)
+    st.session_state.past.append(user_input)
+    st.session_state.generated.append(output)
+
+if st.session_state["generated"]:
+    for i in range(len(st.session_state["generated"]) - 1, -1, -1):
+        message(st.session_state["generated"][i], key=str(i))
+        message(
+            st.session_state["past"][i], is_user=True, key=str(i) + "_user"
+        )
