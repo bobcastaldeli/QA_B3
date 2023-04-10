@@ -28,8 +28,15 @@ async def load_pipeline():
 
     time.sleep(30)
     app.pipeline = Pipeline.load_from_yaml("conf/pipline.yaml")
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    """
+    This function is responsible for shutting down the Elasticsearch container.
+    """
     subprocess.run(
-        [f"docker start {ELASTICSEARCH_CONTAINER_NAME}"],
+        [f"docker stop {ELASTICSEARCH_CONTAINER_NAME}"],
         shell=True,
         check=False,
     )
@@ -44,12 +51,13 @@ async def get_query(
     """
     try:
         result = app.pipeline.run(query=query)
-        return result
+        answer = str(result["answers"][0]).split("answer='")[1].split("',")[0]
+        return answer
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# if __name__ == "__main__":
-#    uvicorn.run(
-#        app, host="127.0.0.1", port=8000, log_level="info", reload=True
-#    )
+if __name__ == "__main__":
+    uvicorn.run(
+        app, host="127.0.0.1", port=8000, log_level="info", reload=True
+    )
