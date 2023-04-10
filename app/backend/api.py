@@ -3,10 +3,17 @@ This module contains the API endpoints for question answering of B3 products and
 """
 
 import time
+import subprocess
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from haystack.pipelines import Pipeline
+from haystack.utils import launch_es
 
+
+ELASTICSEARCH_CONTAINER_NAME = "elasticsearch"
+subprocess.run(
+    [f"docker start {ELASTICSEARCH_CONTAINER_NAME}"], shell=True, check=False
+)
 
 app = FastAPI()
 
@@ -17,8 +24,15 @@ async def load_pipeline():
     """
     This function is responsible for loading the pipeline from the yaml file.
     """
+    # Sleep for 60 seconds to allow Elasticsearch to finish initialization
+
     time.sleep(30)
     app.pipeline = Pipeline.load_from_yaml("conf/pipline.yaml")
+    subprocess.run(
+        [f"docker start {ELASTICSEARCH_CONTAINER_NAME}"],
+        shell=True,
+        check=False,
+    )
 
 
 @app.get("/query")

@@ -52,12 +52,6 @@ bleach==6.0.0
     # via nbconvert
 blinker==1.5
     # via streamlit
-boto3==1.26.97
-    # via metaflow
-botocore==1.29.97
-    # via
-    #   boto3
-    #   s3transfer
 build==0.10.0
     # via pip-tools
 cachetools==5.3.0
@@ -200,10 +194,6 @@ jinja2==3.1.2
     #   notebook
     #   pydeck
     #   sphinx
-jmespath==1.0.1
-    # via
-    #   boto3
-    #   botocore
 jsonpointer==2.3
     # via jsonschema
 jsonschema[format-nongpl]==4.17.3
@@ -257,8 +247,6 @@ mccabe==0.7.0
     # via pylint
 mdurl==0.1.2
     # via markdown-it-py
-metaflow==2.8.1
-    # via -r requirements-dev.in
 mistune==2.0.5
     # via nbconvert
 mypy-extensions==1.0.0
@@ -404,9 +392,7 @@ pygments==2.14.0
     #   rich
     #   sphinx
 pylint==2.17.0
-    # via
-    #   -r requirements-dev.in
-    #   metaflow
+    # via -r requirements-dev.in
 pympler==1.0.1
     # via streamlit
 pyproject-api==1.5.1
@@ -429,7 +415,6 @@ python-dateutil==2.8.2
     # via
     #   -c requirements.txt
     #   arrow
-    #   botocore
     #   jupyter-client
     #   kaggle
     #   pandas
@@ -467,7 +452,6 @@ requests==2.28.2
     # via
     #   -c requirements.txt
     #   kaggle
-    #   metaflow
     #   sphinx
     #   streamlit
 rfc3339-validator==0.1.4
@@ -484,8 +468,6 @@ ruamel-yaml==0.17.21
     # via pre-commit-hooks
 ruamel-yaml-clib==0.2.7
     # via ruamel-yaml
-s3transfer==0.6.0
-    # via boto3
 semver==2.13.0
     # via streamlit
 send2trash==1.8.0
@@ -538,6 +520,10 @@ starlette==0.26.1
     #   -c requirements.txt
     #   fastapi
 streamlit==1.20.0
+    # via
+    #   -r requirements-dev.in
+    #   streamlit-chat
+streamlit-chat==0.0.2.2
     # via -r requirements-dev.in
 terminado==0.17.1
     # via
@@ -617,7 +603,6 @@ uri-template==1.2.0
 urllib3[socks]==1.26.15
     # via
     #   -c requirements.txt
-    #   botocore
     #   kaggle
     #   requests
 uvicorn[standard]==0.21.1

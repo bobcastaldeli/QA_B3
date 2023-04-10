@@ -15,8 +15,8 @@ nbqa
 tox
 notebook
 squarify
-metaflow
 fastapi
 uvicorn
 pydantic
 streamlit
+streamlit-chat
