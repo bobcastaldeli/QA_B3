@@ -21,14 +21,12 @@ logger = logging.getLogger(__name__)
 
 
 # %%
-with open("../../../conf/parameters.yaml", "r", encoding="utf-8") as f:
+with open("conf/parameters.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 
 
 # %%
-produtos_url = pd.read_csv(
-    "../../../data/01_raw/categoria_produtos.csv", index_col=0
-)
+produtos_url = pd.read_csv("data/01_raw/categoria_produtos.csv", index_col=0)
 
 
 # %%
@@ -46,6 +44,6 @@ docs_df = scrap_product_description(
 
 # %%
 docs_df.to_csv(
-    "../../../data/02_intermediate/docs.csv",
+    "data/02_intermediate/docs.csv",
     index=False,
 )

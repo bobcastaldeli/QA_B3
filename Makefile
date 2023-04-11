@@ -74,14 +74,32 @@ build:
 
 #################################################################################
 
-## ETL for Apple Store
-apple:
-	@$(PYTHON_INTERPRETER) src/etl_apple.py
+####### ETL for B3 Products and Services #######
+
+# Download the roots urls for B3 products and services
+download_urls:
+	@$(PYTHON_INTERPRETER) src/pipelines/etl/download_urls.py
 
 
-## ETL for Google Play Store
-google:
-	@$(PYTHON_INTERPRETER) src/etl_google.py
+# Download the all B3 products and services documents
+download_docs:
+	@$(PYTHON_INTERPRETER) src/pipelines/etl/download_docs.py
+
+
+# Cleaning the B3 products and services documents
+cleaning_docs:
+	@$(PYTHON_INTERPRETER) src/pipelines/etl/cleaning_docs.py
+
+
+# Write the B3 products and services documents in a ElasticSearch
+write_docs:
+	@$(PYTHON_INTERPRETER) src/pipelines/etl/write_docs.py
+
+
+####### QA for B3 Products and Services #######
+# Generate the QA pipeline for B3 products and services
+qa_model:
+	@$(PYTHON_INTERPRETER) src/pipelines/qa/qa_model.py
 
 
 #################################################################################

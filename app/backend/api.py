@@ -10,12 +10,27 @@ from haystack.pipelines import Pipeline
 from haystack.utils import launch_es
 
 
+# ELASTICSEARCH_CONTAINER_NAME = "elasticsearch"
+# subprocess.run(
+#    [f"docker start {ELASTICSEARCH_CONTAINER_NAME}"], shell=True, check=False
+# )
+
 ELASTICSEARCH_CONTAINER_NAME = "elasticsearch"
-subprocess.run(
-    [f"docker start {ELASTICSEARCH_CONTAINER_NAME}"], shell=True, check=False
-)
+
 
 app = FastAPI()
+
+
+@app.on_event("startup")
+async def startup_es():
+    """
+    This function is responsible for starting the Elasticsearch container.
+    """
+    subprocess.run(
+        [f"docker start {ELASTICSEARCH_CONTAINER_NAME}"],
+        shell=True,
+        check=False,
+    )
 
 
 # cache the pipeline from yaml file

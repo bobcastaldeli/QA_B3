@@ -13,7 +13,7 @@ from haystack.pipelines import Pipeline
 
 
 # %%
-with open("../../../conf/parameters.yaml", "r", encoding="utf-8") as f:
+with open("conf/parameters.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 
 
@@ -51,4 +51,4 @@ pipeline.add_node(
 
 
 # %%
-pipeline.save_to_yaml("../conf/pipline.yaml")
+pipeline.save_to_yaml("conf/pipline.yaml")

@@ -10,6 +10,7 @@ import yaml
 import logging
 import pandas as pd
 from haystack.document_stores import ElasticsearchDocumentStore
+from haystack.utils import launch_es
 from prepare_data import write_data
 
 
@@ -19,8 +20,12 @@ logger = logging.getLogger(__name__)
 
 
 # %%
-with open("../../../conf/parameters.yaml", "r", encoding="utf-8") as f:
+with open("conf/parameters.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
+
+
+# %%
+launch_es()
 
 
 # %%
