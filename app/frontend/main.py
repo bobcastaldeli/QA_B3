@@ -20,37 +20,24 @@ def generate_response(query):
     response = requests.get(API_URL, params={"query": query}, timeout=15)
     if response.status_code == 200:
         result = response.json()
-        return message(result)
+        return result
     else:
         return None
 
 
-def input():
-    """
-    This function is responsible for taking the user input.
-    """
-    prompt_text = st.text_input("Type your question here")
-    return prompt_text
+if "history" not in st.session_state:
+    st.session_state.history = []
 
 
-if "generated" not in st.session_state:
-    st.session_state["generated"] = []
-
-if "past" not in st.session_state:
-    st.session_state["past"] = []
-
-
-user_input = input()
-
-
-if user_input:
+def generate_answer():
+    user_input = st.session_state.input_text
     output = generate_response(user_input)
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(output)
+    st.session_state.history.append({"message": user_input, "is_user": True})
+    st.session_state.history.append({"message": output, "is_user": False})
 
-if st.session_state["generated"]:
-    for i in range(len(st.session_state["generated"]) - 1, -1, -1):
-        message(st.session_state["generated"][i], key=str(i))
-        message(
-            st.session_state["past"][i], is_user=True, key=str(i) + "_user"
-        )
+
+st.text_input("Talk to the bot", key="input_text", on_change=generate_answer)
+
+
+for i, chat in enumerate(st.session_state.history):
+    message(**chat, key=str(i))

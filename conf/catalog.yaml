@@ -1,6 +1,3 @@
-raw:
-  ../../../data/01_raw/categoria_produtos.csv
-intermediate:
-  ../../../data/02_intermediate/docs.csv
-features:
-  ../../../data/03_features/docs.csv
+raw: data/01_raw/categoria_produtos.csv
+intermediate: data/02_intermediate/docs.csv
+features: data/03_features/docs.csv

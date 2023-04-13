@@ -4,23 +4,12 @@
 #
 #    pip-compile --no-emit-index-url requirements.in
 #
-aiohttp==3.8.4
-    # via langchain
-aiosignal==1.3.1
-    # via aiohttp
 alembic==1.10.2
     # via mlflow
-anyio==3.6.2
-    # via
-    #   starlette
-    #   watchfiles
 async-generator==1.10
     # via trio
-async-timeout==4.0.2
-    # via aiohttp
 attrs==22.2.0
     # via
-    #   aiohttp
     #   jsonschema
     #   outcome
     #   trio
@@ -36,28 +25,24 @@ backoff==2.2.1
     # via posthog
 beautifulsoup4==4.12.0
     # via -r requirements.in
+boilerpy3==1.0.6
+    # via farm-haystack
+canals==0.0.1
+    # via farm-haystack
 certifi==2022.12.7
     # via
-    #   clickhouse-connect
     #   elasticsearch
     #   msrest
     #   requests
     #   selenium
 charset-normalizer==3.1.0
-    # via
-    #   aiohttp
-    #   requests
-chromadb==0.3.14
-    # via -r requirements.in
+    # via requests
 click==8.1.3
     # via
     #   databricks-cli
     #   flask
     #   mlflow
     #   nltk
-    #   uvicorn
-clickhouse-connect==0.5.17
-    # via chromadb
 cloudpickle==2.2.1
     # via
     #   mlflow
@@ -70,28 +55,24 @@ cycler==0.11.0
     # via matplotlib
 databricks-cli==0.17.5
     # via mlflow
-dataclasses-json==0.5.7
-    # via langchain
 dill==0.3.6
     # via farm-haystack
 docker==6.0.1
     # via mlflow
 docopt==0.6.2
     # via num2words
-duckdb==0.7.1
-    # via chromadb
 elasticsearch==7.17.9
     # via farm-haystack
 entrypoints==0.4
     # via mlflow
+events==0.4
+    # via farm-haystack
 exceptiongroup==1.1.1
     # via
     #   trio
     #   trio-websocket
-farm-haystack[all,faiss]==1.14.0
+farm-haystack[all-gpu]==1.15.0
     # via -r requirements.in
-fastapi==0.95.0
-    # via chromadb
 filelock==3.10.0
     # via
     #   huggingface-hub
@@ -102,10 +83,6 @@ flask==2.2.3
     # via mlflow
 fonttools==4.39.2
     # via matplotlib
-frozenlist==1.3.3
-    # via
-    #   aiohttp
-    #   aiosignal
 gitdb==4.0.10
     # via gitpython
 gitpython==3.1.31
@@ -115,13 +92,7 @@ greenlet==2.0.2
 gunicorn==20.1.0
     # via mlflow
 h11==0.14.0
-    # via
-    #   uvicorn
-    #   wsproto
-hnswlib==0.7.0
-    # via chromadb
-httptools==0.5.0
-    # via uvicorn
+    # via wsproto
 huggingface-hub==0.13.3
     # via
     #   farm-haystack
@@ -129,10 +100,8 @@ huggingface-hub==0.13.3
     #   transformers
 idna==3.4
     # via
-    #   anyio
     #   requests
     #   trio
-    #   yarl
 importlib-metadata==6.1.0
     # via
     #   alembic
@@ -166,8 +135,6 @@ jsonschema==4.17.3
     # via farm-haystack
 kiwisolver==1.4.4
     # via matplotlib
-langchain==0.0.123
-    # via -r requirements.in
 langdetect==1.0.9
     # via farm-haystack
 lit==16.0.0
@@ -176,8 +143,6 @@ llvmlite==0.39.1
     # via numba
 lxml==4.9.2
     # via python-docx
-lz4==4.3.2
-    # via clickhouse-connect
 mako==1.2.4
     # via alembic
 markdown==3.4.1
@@ -187,12 +152,6 @@ markupsafe==2.1.2
     #   jinja2
     #   mako
     #   werkzeug
-marshmallow==3.19.0
-    # via
-    #   dataclasses-json
-    #   marshmallow-enum
-marshmallow-enum==1.5.1
-    # via dataclasses-json
 matplotlib==3.7.1
     # via mlflow
 mlflow==2.2.2
@@ -207,14 +166,9 @@ mpmath==1.3.0
     # via sympy
 msrest==0.7.1
     # via azure-ai-formrecognizer
-multidict==6.0.4
-    # via
-    #   aiohttp
-    #   yarl
-mypy-extensions==1.0.0
-    # via typing-inspect
 networkx==3.0
     # via
+    #   canals
     #   farm-haystack
     #   torch
 nltk==3.8.1
@@ -227,11 +181,7 @@ numba==0.56.4
     # via shap
 numpy==1.23.5
     # via
-    #   -r requirements.in
-    #   chromadb
     #   contourpy
-    #   hnswlib
-    #   langchain
     #   matplotlib
     #   mlflow
     #   numba
@@ -280,7 +230,6 @@ packaging==23.0
     # via
     #   docker
     #   huggingface-hub
-    #   marshmallow
     #   matplotlib
     #   mlflow
     #   shap
@@ -289,7 +238,6 @@ packaging==23.0
 pandas==1.5.3
     # via
     #   -r requirements.in
-    #   chromadb
     #   farm-haystack
     #   mlflow
     #   shap
@@ -300,9 +248,7 @@ pillow==9.4.0
 pkgutil-resolve-name==1.3.10
     # via jsonschema
 posthog==2.4.0
-    # via
-    #   chromadb
-    #   farm-haystack
+    # via farm-haystack
 protobuf==3.20.2
     # via
     #   farm-haystack
@@ -311,11 +257,8 @@ pyarrow==11.0.0
     # via mlflow
 pydantic==1.10.6
     # via
-    #   chromadb
     #   farm-haystack
-    #   fastapi
     #   inflect
-    #   langchain
 pyjwt==2.6.0
     # via databricks-cli
 pyparsing==3.0.9
@@ -332,21 +275,16 @@ python-dateutil==2.8.2
 python-docx==0.8.11
     # via farm-haystack
 python-dotenv==1.0.0
-    # via
-    #   uvicorn
-    #   webdriver-manager
+    # via webdriver-manager
 pytz==2022.7.1
     # via
-    #   clickhouse-connect
     #   mlflow
     #   pandas
 pyyaml==6.0
     # via
     #   huggingface-hub
-    #   langchain
     #   mlflow
     #   transformers
-    #   uvicorn
 quantulum3==0.8.1
     # via farm-haystack
 querystring-parser==1.2.4
@@ -363,12 +301,10 @@ regex==2022.10.31
 requests==2.28.2
     # via
     #   azure-core
-    #   chromadb
     #   databricks-cli
     #   docker
     #   farm-haystack
     #   huggingface-hub
-    #   langchain
     #   mlflow
     #   msrest
     #   posthog
@@ -397,9 +333,7 @@ scipy==1.10.1
 selenium==4.8.2
     # via -r requirements.in
 sentence-transformers==2.2.2
-    # via
-    #   chromadb
-    #   farm-haystack
+    # via farm-haystack
 sentencepiece==0.1.97
     # via sentence-transformers
 seqeval==1.2.2
@@ -420,9 +354,7 @@ slicer==0.0.7
 smmap==5.0.0
     # via gitdb
 sniffio==1.3.0
-    # via
-    #   anyio
-    #   trio
+    # via trio
 sortedcontainers==2.4.0
     # via trio
 soupsieve==2.4
@@ -430,20 +362,17 @@ soupsieve==2.4
 sqlalchemy==1.4.47
     # via
     #   alembic
-    #   langchain
     #   mlflow
 sqlparse==0.4.3
     # via mlflow
-starlette==0.26.1
-    # via fastapi
+sseclient-py==1.7.2
+    # via farm-haystack
 sympy==1.11.1
     # via torch
 tabulate==0.9.0
     # via databricks-cli
 tenacity==8.2.2
-    # via
-    #   farm-haystack
-    #   langchain
+    # via farm-haystack
 threadpoolctl==3.1.0
     # via scikit-learn
 tika==2.6.0
@@ -488,30 +417,17 @@ typing-extensions==4.5.0
     #   azure-core
     #   huggingface-hub
     #   pydantic
-    #   starlette
     #   torch
-    #   typing-inspect
-typing-inspect==0.8.0
-    # via dataclasses-json
 urllib3[socks]==1.26.15
     # via
-    #   clickhouse-connect
     #   docker
     #   elasticsearch
     #   requests
     #   selenium
-uvicorn[standard]==0.21.1
-    # via chromadb
-uvloop==0.17.0
-    # via uvicorn
-watchfiles==0.19.0
-    # via uvicorn
 webdriver-manager==3.8.5
     # via -r requirements.in
 websocket-client==1.5.1
     # via docker
-websockets==10.4
-    # via uvicorn
 werkzeug==2.2.3
     # via flask
 wheel==0.40.0
@@ -524,14 +440,10 @@ wheel==0.40.0
     #   nvidia-nvtx-cu11
 wsproto==1.2.0
     # via trio-websocket
-yarl==1.8.2
-    # via aiohttp
 zipp==3.15.0
     # via
     #   importlib-metadata
     #   importlib-resources
-zstandard==0.20.0
-    # via clickhouse-connect
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

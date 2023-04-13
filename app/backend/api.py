@@ -4,6 +4,8 @@ This module contains the API endpoints for question answering of B3 products and
 
 import time
 import subprocess
+import gc
+import torch
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from haystack.pipelines import Pipeline
@@ -55,6 +57,8 @@ async def shutdown():
         shell=True,
         check=False,
     )
+    gc.collect()
+    torch.cuda.empty_cache()
 
 
 @app.get("/query")

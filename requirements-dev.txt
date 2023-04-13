@@ -10,10 +10,8 @@ altair==4.2.2
     # via streamlit
 anyio==3.6.2
     # via
-    #   -c requirements.txt
     #   jupyter-server
     #   starlette
-    #   watchfiles
 argon2-cffi==21.3.0
     # via
     #   jupyter-server
@@ -111,9 +109,7 @@ exceptiongroup==1.1.1
 executing==1.2.0
     # via stack-data
 fastapi==0.95.0
-    # via
-    #   -c requirements.txt
-    #   -r requirements-dev.in
+    # via -r requirements-dev.in
 fastjsonschema==2.16.3
     # via nbformat
 filelock==3.10.0
@@ -132,10 +128,6 @@ gitpython==3.1.31
     #   -c requirements.txt
     #   streamlit
 h11==0.14.0
-    # via
-    #   -c requirements.txt
-    #   uvicorn
-httptools==0.5.0
     # via
     #   -c requirements.txt
     #   uvicorn
@@ -250,9 +242,7 @@ mdurl==0.1.2
 mistune==2.0.5
     # via nbconvert
 mypy-extensions==1.0.0
-    # via
-    #   -c requirements.txt
-    #   black
+    # via black
 nb-black==1.0.7
     # via -r requirements-dev.in
 nbclassic==0.5.3
@@ -423,7 +413,6 @@ python-dotenv==1.0.0
     # via
     #   -c requirements.txt
     #   -r requirements-dev.in
-    #   uvicorn
 python-json-logger==2.0.7
     # via jupyter-events
 python-slugify==8.0.1
@@ -440,7 +429,6 @@ pyyaml==6.0
     #   -c requirements.txt
     #   jupyter-events
     #   pre-commit
-    #   uvicorn
 pyzmq==25.0.2
     # via
     #   ipykernel
@@ -516,9 +504,7 @@ squarify==0.4.3
 stack-data==0.6.2
     # via ipython
 starlette==0.26.1
-    # via
-    #   -c requirements.txt
-    #   fastapi
+    # via fastapi
 streamlit==1.20.0
     # via
     #   -r requirements-dev.in
@@ -605,14 +591,8 @@ urllib3[socks]==1.26.15
     #   -c requirements.txt
     #   kaggle
     #   requests
-uvicorn[standard]==0.21.1
-    # via
-    #   -c requirements.txt
-    #   -r requirements-dev.in
-uvloop==0.17.0
-    # via
-    #   -c requirements.txt
-    #   uvicorn
+uvicorn==0.21.1
+    # via -r requirements-dev.in
 validators==0.20.0
     # via streamlit
 virtualenv==20.21.0
@@ -621,10 +601,6 @@ virtualenv==20.21.0
     #   tox
 watchdog==3.0.0
     # via streamlit
-watchfiles==0.19.0
-    # via
-    #   -c requirements.txt
-    #   uvicorn
 wcwidth==0.2.6
     # via prompt-toolkit
 webcolors==1.12
@@ -637,10 +613,6 @@ websocket-client==1.5.1
     # via
     #   -c requirements.txt
     #   jupyter-server
-websockets==10.4
-    # via
-    #   -c requirements.txt
-    #   uvicorn
 wheel==0.40.0
     # via
     #   -c requirements.txt

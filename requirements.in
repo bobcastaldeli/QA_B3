@@ -1,9 +1,5 @@
-numpy
 pandas
 beautifulsoup4
 selenium
 webdriver-manager
-farm-haystack[all]
-farm-haystack[faiss]
-langchain
-chromadb
+farm-haystack[all-gpu]

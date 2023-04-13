@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 # %%
-with open("conf/parameters.yaml", "r", encoding="utf-8") as f:
+with open("conf/catalog.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 
 
