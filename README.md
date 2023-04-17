@@ -1,6 +1,8 @@
 # B3 products and services QA chatbot
 ==============================
 
+![B3 QA Products and Services Chatbot](reports/b3_qa_chatbot.png)
+
 This is a project to create a QA chatbot to answer questions about B3 products and services.
 
 
