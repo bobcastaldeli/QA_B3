@@ -6,10 +6,6 @@ components:
   params:
     document_store: ElasticsearchDocumentStore
   type: BM25Retriever
-- name: FARMReader
-  params:
-    model_name_or_path: timpal0l/mdeberta-v3-base-squad2
-  type: FARMReader
 - name: PromptNode
   params:
     api_key: <your_api_key>
@@ -24,8 +20,5 @@ pipelines:
     name: BM25Retriever
   - inputs:
     - BM25Retriever
-    name: FARMReader
-  - inputs:
-    - FARMReader
     name: PromptNode
 version: 1.15.0
