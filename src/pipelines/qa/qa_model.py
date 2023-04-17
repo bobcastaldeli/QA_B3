@@ -8,7 +8,13 @@ import os
 import time
 import yaml
 from haystack.document_stores import ElasticsearchDocumentStore
-from haystack.nodes import BM25Retriever, EmbeddingRetriever, FARMReader
+from haystack.nodes import (
+    BM25Retriever,
+    FARMReader,
+    PromptTemplate,
+    PromptNode,
+    AnswerParser,
+)
 from haystack.pipelines import Pipeline
 
 
@@ -41,6 +47,14 @@ reader = FARMReader(model_name_or_path=config["reader_model"], use_gpu=True)
 
 
 # %%
+prompt_node = PromptNode(
+    model_name_or_path=config["llm_model"],
+    api_key=config["api_key"],
+    default_prompt_template=config["prompt_text"],
+)
+
+
+# %%
 pipeline = Pipeline()
 pipeline.add_node(
     component=bm25_retriever, name="BM25Retriever", inputs=["Query"]
@@ -48,7 +62,10 @@ pipeline.add_node(
 pipeline.add_node(
     component=reader, name="FARMReader", inputs=["BM25Retriever"]
 )
+pipeline.add_node(
+    component=prompt_node, name="PromptNode", inputs=["FARMReader"]
+)
 
 
 # %%
-pipeline.save_to_yaml("conf/pipline.yaml")
+pipeline.save_to_yaml("conf/pipeline.yaml")

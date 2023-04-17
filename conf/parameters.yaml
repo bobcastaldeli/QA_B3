@@ -2,3 +2,6 @@ prefixo_url: 'https://www.b3.com.br/'
 produtos_page: 'https://www.b3.com.br/pt_br/produtos-e-servicos/'
 sufixo_url: produtos-e-servicos/negociacao/
 reader_model: timpal0l/mdeberta-v3-base-squad2
+llm_model: text-davinci-003
+prompt_text: question-answering-per-document
+api_key: <your_api_key>

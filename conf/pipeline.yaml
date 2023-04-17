@@ -10,6 +10,12 @@ components:
   params:
     model_name_or_path: timpal0l/mdeberta-v3-base-squad2
   type: FARMReader
+- name: PromptNode
+  params:
+    api_key: <your_api_key>
+    default_prompt_template: question-answering-per-document
+    model_name_or_path: text-davinci-003
+  type: PromptNode
 pipelines:
 - name: query
   nodes:
@@ -19,4 +25,7 @@ pipelines:
   - inputs:
     - BM25Retriever
     name: FARMReader
-version: 1.14.0
+  - inputs:
+    - FARMReader
+    name: PromptNode
+version: 1.15.0

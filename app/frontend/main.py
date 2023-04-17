@@ -17,7 +17,7 @@ def generate_response(query):
     """
     # Replace the API_URL with the URL of your deployed API endpoint
     API_URL = "http://localhost:8000/query"
-    response = requests.get(API_URL, params={"query": query}, timeout=15)
+    response = requests.get(API_URL, params={"query": query})
     if response.status_code == 200:
         result = response.json()
         return result
