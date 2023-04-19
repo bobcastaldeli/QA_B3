@@ -1,4 +1,4 @@
-.PHONY: clean data
+.PHONY: clean data requirements
 
 #################################################################################
 # GLOBALS                                                                       #
