@@ -8,9 +8,10 @@ components:
   type: BM25Retriever
 - name: PromptNode
   params:
-    api_key: <your_api_key>
+    api_key: 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
     default_prompt_template: question-answering-per-document
     model_name_or_path: text-davinci-003
+    max_length: 150
   type: PromptNode
 pipelines:
 - name: query

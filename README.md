@@ -3,6 +3,7 @@
 
 ![B3 QA Products and Services Chatbot](reports/b3_qa_chatbot.png)
 
+
 This is a project to create a QA chatbot to answer questions about B3 products and services.
 
 
@@ -132,6 +133,11 @@ After that you can open in another terminal the UI to test the API with the foll
 ```bash
 streamlit run app/frontend/main.py 
 ```
+
+# Architecture
+
+![Architecture](reports/architecture.png)
+
 
 # TODO
 

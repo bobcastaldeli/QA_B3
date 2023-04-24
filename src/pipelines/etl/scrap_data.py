@@ -10,9 +10,6 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-# show all text in columns
-pd.set_option("display.max_colwidth", None)
-
 
 # %%
 logging.basicConfig(level=logging.INFO)

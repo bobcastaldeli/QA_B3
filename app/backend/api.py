@@ -2,7 +2,6 @@
 This module contains the API endpoints for question answering of B3 products and services.
 """
 
-import os
 import time
 import subprocess
 import gc
@@ -34,6 +33,7 @@ async def startup_es():
         shell=True,
         check=False,
     )
+    time.sleep(30)
 
 
 # cache the pipeline from yaml file
@@ -44,7 +44,6 @@ async def load_pipeline():
     """
     # Sleep for 60 seconds to allow Elasticsearch to finish initialization
 
-    time.sleep(30)
     app.pipeline = Pipeline.load_from_yaml("conf/pipeline.yaml")
 
 
